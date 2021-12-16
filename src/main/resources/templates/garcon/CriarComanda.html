@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos :: head('Service - Criar Comanda')}"></head>
+
+<body>
+	<header th:replace="~{HeaderBasico :: headerBasico()}"></header>
+
+	<div class="jumbotron text-center container-min-height">
+		<div class="text-center">
+			<form th:object="${comanda}" action="/garcons/comanda" method="POST">
+				<div class="mb-3">
+					<label class="btn btn-primary">Numero da Mesa</label> <select
+						class="btn btn-primary dropdown-toggle" name="mesa">
+						<option th:each="mesasV : ${mesa}" th:value="${mesasV.numero}"
+							th:text="${mesasV.numero}"></option>
+					</select>
+				</div>
+				<button class="btn btn-primary" type="submit">Abrir comanda</button>
+			</form>
+
+		</div>
+		<br>
+		<div class="col text-center">
+			<a class="btn btn-primary btn-sm" href="javascript:history.back()">Voltar</a>
+		</div>
+
+
+	</div>
+
+
+	<footer th:replace="~{fragmentos :: footer()}"></footer>
+
+</body>
+
+</html>

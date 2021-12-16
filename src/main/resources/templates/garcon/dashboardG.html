@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos :: head('Service - Dashboard Garçom')}"></head>
+
+<body>
+	<header th:replace="~{HeaderBasico :: headerBasico()}"></header>
+
+	<div class="jumbotron text-center">
+		<h1>Comandas</h1>	
+		<a href="/garcons/comandas/criar" class="btn btn-primary">Adicionar Comanda</a>
+	</div>
+	<div class="container container-min-height">
+		<div class="row"></div>
+		<div class="col-12">
+			<h1>Gerenciamento das Mesas <span th:text="${id}"></span></h1>
+		</div>
+	
+	<div class="container">	
+		<div class="row mx-lg-n5">
+			<th:block th:each="mesa : ${mesas}">
+				<div class="col py-3 px-lg-5 border bg-light text-center" >					
+						<a th:href="@{/garcons/mesa/{id}(id = ${mesa.getId()})}">
+							<button type="submit" class="btn btn-primary" th:utext="${'Mesa '+mesa.numero}"></button></a>
+
+				</div>				
+			</th:block>
+		</div>
+	</div>
+</div>
+	<script>
+		alert
+	</script>
+<footer th:replace="~{fragmentos :: footer()}"></footer>
+</body>
+
+</html>

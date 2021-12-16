@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head
+	th:replace="~{fragmentos :: head('Service - Lista de Comandas Administrador')}">
+<meta charset="UTF-8">
+</head>
+
+<body>
+	<header th:replace="~{fragmentos :: header('')}"></header>
+	<div class="container container-min-height">
+		<div class="col-12">
+			<h1>Gerenciamento das Comandas</h1>
+		</div>
+		<section>
+			<div class="container section-container">
+				<div class="contencao">
+						<div class="row section-coluna">
+							<th:block th:each="mesa : ${mesas}">
+								<div class="col text-center">
+									<a
+										th:href="@{/dashAdm/mesa/{id}/comandas(id = ${mesa.getId()})}">
+										<button type="submit" class="btn btn-success"
+											th:utext="${'Mesa '+mesa.numero}"></button>
+									</a>
+								</div>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<footer th:replace="~{fragmentos :: footer()}"></footer>
+</body>
+
+</html>

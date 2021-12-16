@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos :: head('Service - Lista de Pedidos da Cozinha')}"></head>
+
+<body>
+	<header th:replace="~{fragmentos :: header('Lista de Pedidos')}"></header>
+	<div class="container container-min-height">
+		<div class="col-12">
+			<table class="table" style="margin-top: .85em; text-align: center;">
+				<thead style="background-color: #F5F5F5;">
+					<tr>
+
+						<th class="table-success" scope="col-2">Codigo do pedido</th>
+						<th class="table-success" scope="col-2">Prato</th>
+						<th class="table-success" scope="col-2">quantidade</th>
+						<th class="table-success" scope="col-2">Observação</th>
+						<th class="table-success" scope="col-2">Status</th>
+						<th class="table-success" scope="col-2"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="l : ${listar} ">
+					
+						<th class="table-info" scope="row" th:text="${l.getId()}">id</th>
+						<td class="table-info" th:text="${l.nome}">Nome do Produto</td>
+						<td class="table-info" th:text="${l.quantidade}">Quantidade</td>
+						<td class="table-info" th:text="${l.observacao}">Observação</td>
+						<td class="table-info" th:text="${l.status}">Status</td> 
+						<td class="table-info">
+							<a th:href="@{/cozinha/atualizar/{id}/adm(id = ${l.getId()})}">
+							<button type="submit" class="btn btn-primary">Pronto</button></a>
+						</td>
+						
+					</tr>
+				</tbody>
+
+			</table>
+			
+		</div>
+		
+	</div>
+
+<footer th:replace="~{fragmentos :: footer()}"></footer>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

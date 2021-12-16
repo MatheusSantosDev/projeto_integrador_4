@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width" />
+		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+		<!-- Bootstrap CSS -->
+		<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+		
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+			 	rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+		
+		<head th:replace="~{fragmentos :: head('Service - Cadastro de Produtos')}"></head>
+	</head>
+	
+	<body>
+		<header th:replace="~{fragmentos :: header('Cadastro de Produtos')}"></header>
+		<div class="container container-min-height">
+			<form  method="POST" th:object="${produto}" th:action="@{/produtos}">
+				<div class="form-row">
+		
+					<div class="form-group col-md-8">
+						<input type="text" class="form-control" placeholder="Nome" 
+							th:field="*{nome}"/>
+					</div>
+					
+					<div class="form-group col-md-4">
+						<select class="form-select" aria-label="Default select example" th:field="*{categoria}">
+						  	<option value="">Selecione a categoria</option>
+						  	<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+						</select>
+					</div>
+					<!--<div class="form-group col-md-4">
+						<input type="text" class="form-control" placeholder="categoria" 
+							th:field="*{categoria}"/>
+					</div>-->
+					
+					<div class="form-group col-md-8">
+						<input type="text" class="form-control" placeholder="descricao" 
+							th:field="*{descricao}"/>
+					</div>
+					
+					<div class="form-group col-md-4">
+						<input type="number" step="any" class="form-control" placeholder="valor unitario" 
+							th:field="*{valor}"/>
+					</div>
+					
+					<div class="col-md-2">
+						<button type="submit" class="btn btn-success">Adicionar</button>
+						
+						<a href="javascript:history.back()">
+							<button type="button" class="btn btn-primary">Voltar</button>
+						</a>
+						
+					</div>
+				</div>
+			</form>
+		</div>
+		<footer th:replace="~{fragmentos :: footer()}"></footer>
+	</body>
+</html>

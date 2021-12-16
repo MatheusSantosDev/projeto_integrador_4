@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos :: head('Service - Dashboard Cozinha')}"></head>
+
+<body>
+	<header th:replace="~{HeaderBasico :: headerBasico()}"></header>
+	<div class="container container-min-height">
+		<div class="col-12">
+			<table class="table" style="margin-top: .85em; text-align: center;">
+				<thead style="background-color: #F5F5F5;">
+					<tr>
+
+						<th scope="col-2">Codigo do pedido</th>
+						<th scope="col-2">Prato</th>
+						<th scope="col-2">quantidade</th>
+						<th scope="col-2">Observação</th>
+						<th scope="col-2">Status</th>
+						<th scope="col-2"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+				
+					<tr th:each="l : ${listar}" th:if="${l.verificaTempo() == 3}" style="background-color: rgb(255, 53, 53);">
+
+						<th scope="row" th:text="${l.getId()}">id</th>
+						<td th:text="${l.nome}">Nome do Produto</td>
+						<td th:text="${l.quantidade}">Quantidade</td>
+						<td th:text="${l.observacao}">Observação</td>
+						<td th:if="${l.status.equals('nao')}"th:text="Preparação">Status</td> 
+						<td>
+							<a th:href="@{/cozinha/atualizar/{id}(id = ${l.getId()})}">
+							<button type="submit" class="btn btn-primary">Pronto</button></a>
+						</td>
+						
+					</tr>
+					
+					<tr th:each="l : ${listar}" th:if="${l.verificaTempo() == 2}" style="background-color: rgb(255, 255, 106);">
+
+						<th scope="row" th:text="${l.getId()}">id</th>
+						<td th:text="${l.nome}">Nome do Produto</td>
+						<td th:text="${l.quantidade}">Quantidade</td>
+						<td th:text="${l.observacao}">Observação</td>
+						<td th:if="${l.status.equals('nao')}"th:text="Preparação">Status</td> 
+						<td>
+							<a th:href="@{/cozinha/atualizar/{id}(id = ${l.getId()})}">
+							<button type="submit" class="btn btn-primary">Pronto</button></a>
+						</td>
+						
+					</tr>
+					
+					<tr th:each="l : ${listar}" th:if="${l.verificaTempo() == 1}" style="background-color: rgb(0, 255, 128);">
+
+						<th scope="row" th:text="${l.getId()}">id</th>
+						<td th:text="${l.nome}">Nome do Produto</td>
+						<td th:text="${l.quantidade}">Quantidade</td>
+						<td th:text="${l.observacao}">Observação</td>
+						<td th:if="${l.status.equals('nao')}"th:text="Preparação">Status</td> 
+						<td>
+							<a th:href="@{/cozinha/atualizar/{id}(id = ${l.getId()})}">
+							<button type="submit" class="btn btn-primary">Pronto</button></a>
+						</td>
+						
+					</tr>
+				</tbody>
+
+			</table>
+			
+		</div>
+		
+	</div>
+
+<footer th:replace="~{fragmentos :: footer()}"></footer>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

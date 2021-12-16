@@ -1,0 +1,89 @@
+<head th:fragment="head(titulo)">
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css"
+	href="/css/bootstrap/bootstrap-reboot.css">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<title th:text="${titulo}">titulo de todas as paginas do ADM</title>
+</head>
+<header th:fragment="header(titulo)">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class=" container">
+			<a class="navbar-brand align-content-center" th:classappend="${#httpServletRequest.getRequestURI().equals('/') ? 'active':''}"
+					href="/"> <img src="/img/logoService.png"
+				width="30" height="30" class=" align-top borda-logo font-weight-bold"
+				alt=""> Vila Paraíso
+			</a>
+			<ul class="navbar-nav">
+				<li class="nav-link"><a class="btn btn-primary btn-sm"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/dashAdm') ? 'active':''}"
+					href="/dashAdm">Dashboard</a></li>
+				<li class="nav-link"><a class="btn btn-primary btn-sm"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/dashAdm/comandas') ? 'active':''}"
+					href="/dashAdm/comandas">Listar Comandas</a></li>
+				<li class="nav-link"><a class="btn btn-primary btn-sm"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/comandas') ? 'active':''}"
+					href="/comandas/criar">Criar Comandas</a></li>
+				<li class="nav-link"><a class="btn btn-primary btn-sm"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/usuarios') ? 'active':''}"
+					href="/usuarios">Usuários</a></li>
+				<li class="nav-link"><a class="btn btn-primary btn-sm"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/categoria') ? 'active':''}"
+					href="/categorias">Categorias</a></li>
+				<li class="nav-link"><a class="btn btn-primary btn-sm"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/produtos') ? 'active':''}"
+					href="/produtos">Produtos</a></li>
+				<li class="nav-link"><a class="btn btn-primary btn-sm"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/cozinha/listar/adm') ? 'active':''}"
+					href="/cozinha/listar/adm">Cozinha</a></li>
+
+				<li class="nav-link">Bem vindo!
+					[[${#httpServletRequest.remoteUser}]]</li>
+				<li class="nav-link">
+					<form action="/logout" method="post"
+						class="navbar-form navbar-right">
+
+						<button type="submit" class="btn btn-primary btn-sm">Sair</button>
+					</form>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container mt-3">
+		<div class="row"></div>
+		<div class="col-12">
+			<h1 th:text="${titulo}">Service - Restaurantes</h1>
+		</div>
+	</div>
+</header>
+
+<footer class="text-center text-lg-start" th:fragment="footer()">   
+    <ul class="navbar-nav">
+    	<li class="navbar-link">
+    		<a href="https://github.com/GabrielMaxMaia/Service-PIIV">
+  			<img src="/img/logoService.png" width="15" height="15" class=" align-center" alt="">
+  			<a href="https://github.com/GabrielMaxMaia/Service-PIIV">Service - Gerenciamento de Restaurantes</a>
+  		</li>
+    	<li class="navbar-link">
+    		<a class="text-light" href="/">© 2021 Copyright - Service Gerenciamento de Restaurantes</a>
+    	</li>
+        <li class="navbar-link">
+        	<a class="link-light" href="https://github.com/GabrielMaxMaia">Gabriel Max</a><span> |</span>
+        	<a class="link-light" href="https://github.com/GustavoHBraga">Gustavo Braga</a><span> |</span>
+        	<a class="link-light" href="https://github.com/LeonardoAlvesDev">Leonardo Alves</a><span> |</span>
+        	<a class="link-light" href="https://github.com/MatheusSantosDev">Matheus Santos</a>        	
+        </li>
+  		
+    </ul>
+</footer>

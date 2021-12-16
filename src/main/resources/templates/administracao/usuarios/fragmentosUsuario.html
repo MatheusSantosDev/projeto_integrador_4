@@ -1,0 +1,36 @@
+<div class="container" th:fragment="form(requisicaoNovoUsuario, action)">
+	<div class="row">
+		<form th:object="${requisicaoNovoUsuario}" th:action="${action}" method="POST">
+			<div class="mb-3">
+				<label class="form-label">Nome</label>
+				<input class="form-control" th:errorclass="is-invalid" type="text" th:field="*{nome}">
+				<div class="invalid-feedback" th:errors="*{nome}"></div>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">E-mail</label>
+				<input class="form-control" th:errorclass="is-invalid" type="text" th:field="*{email}">
+				<div class="invalid-feedback" th:errors="*{email}"></div>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Senha</label>
+				<input class="form-control" th:errorclass="is-invalid" type="password" th:field="*{senha}">
+				<div class="invalid-feedback" th:errors="*{senha}"></div>
+			</div>
+
+			<div class="mb-3">				
+				<ul>
+					<li th:each="feat : ${permissoes}">
+						<input type="checkbox" th:field="*{permissoes}" th:value="${feat.codigo}" />
+						<label th:for="${permissoes}" th:text="${feat.descricao}"></label>
+						
+ 					 </li>
+				</ul>	
+						
+			</div>
+
+
+			<button class="btn btn-primary" type="submit">Cadastrar</button>
+			<a href="javascript:history.back()">Voltar</a>
+		</form>
+	</div>
+</div>

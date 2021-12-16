@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos :: head('Service - Caixa Administrador')}"></head>
+
+<body>
+	<header th:replace="~{fragmentos :: header('Caixa adm')}"></header>
+
+	<div class="container container-min-height">
+		<div class="col-12">
+			<table class="table" style="margin-top: .85em; text-align: center;">
+				<thead style="background-color: #F5F5F5;">
+					<tr>
+
+						<th scope="col-2">Mesa</th>
+						<th scope="col-2">Nome</th>
+						<th scope="col-2">quantidade</th>
+						<th scope="col-2">Valor Unitário</th>
+
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="l : ${listaCaixa} ">
+
+						<th scope="row" th:text="${l.mesa}">id</th>
+						<td th:text="${l.nome}">Nome do Produto</td>
+						<td th:text="${l.quantidade}">Quantidade</td>
+						<td th:text="${l.valor}">Observação</td>
+
+
+
+					</tr>
+				</tbody>
+
+			</table>
+			<div class="col-12 text-right">
+				<label>Valor Total: <span th:text="${valorTotal}"></span></label>
+			</div>
+			
+			<form th:action="@{/comandas/{id}/finalizar(id = ${id})}" method="POST">
+				<div class="col-12 text-right">				
+				<button type="submit" class="btn btn-primary">Pagar</button>
+			</div>
+			</form>
+			
+			<div class="col text-center" >
+				<a class="btn btn-primary btn-sm" href="javascript:history.back()">Voltar</a>
+			</div>
+
+		</div>
+
+	</div>
+<footer th:replace="~{fragmentos :: footer()}"></footer>
+</body>
+</html>

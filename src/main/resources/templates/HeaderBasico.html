@@ -1,0 +1,43 @@
+<head th:fragment="head(titulo)">
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css"
+	href="/css/bootstrap/bootstrap-reboot.css">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<title th:text="${titulo}">titulo de todas as paginas do ADM</title>
+</head>
+
+<header th:fragment="headerBasico()">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class=" container">
+			<a class="navbar-brand"
+				th:classappend="${#httpServletRequest.getRequestURI().equals('/') ? 'active':''}"
+				href="/"> <img src="/img/logoService.png" width="30" height="30"
+				class="d-inline-block align-top borda-logo font-weight-bold" alt="">
+				Vila Paraíso
+			</a>
+			<ul class="navbar-nav">
+				<li class="nav-link ml-4">Bem vindo!
+					[[${#httpServletRequest.getUserPrincipal().getName()}]]</li>
+				<li class="nav-link">
+					<form action="/logout" method="post"
+						class="navbar-form navbar-right">
+
+						<button type="submit" class="btn btn-primary btn-sm">Sair</button>
+					</form>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</header>

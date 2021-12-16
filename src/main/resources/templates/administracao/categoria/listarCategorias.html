@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width" />
+		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		
+		<head th:replace="~{fragmentos :: head('Service - Lista de Categoria')}"></head>
+	</head>
+	
+	<body>
+		<header th:replace="~{fragmentos :: header('Lista de Categoria')}"></header>
+		<div class="container container-min-height">
+			<form  method="POST" th:object="${categoria}" th:action="@{/categorias}">
+				<div class="form-row">
+		
+					<div class="form-group col-md-8">
+						<input type="text" class="form-control" placeholder="Nome" 
+							th:field="*{nome}"/>
+					</div>
+					
+					<div class="col-md-2">
+						<button type="submit" class="btn btn-success">Adicionar</button>
+					</div>
+				</div>
+			</form>
+			
+			<table class="table" style="margin-top: .85em; text-align:center;">
+				<thead style="background-color: #F5F5F5;">
+				   <tr>
+				      <th scope="col">Codigo</th>
+				      <th scope="col">Nome</th>
+				      <th scope="col">Ferramenta</th>
+				    </tr>
+				 </thead>
+				 
+				 <tbody>
+				 	<tr th:each="categoria : ${categorias} ">
+				      <th scope="row" th:text="${categoria.getId()}">codigo</th>
+					  <td th:text="${categoria.nome}">Nome da categoria</td>
+					  <td>
+					  	
+					  	<a th:href="@{/categorias/delete/{id} (id = ${categoria.id})}">
+					  	 	<button type="submit" class="btn btn-danger">Excluir</button>
+					  	</a>
+					  </td>
+				    </tr>
+				</tbody>
+			</table>
+		</div>
+		<footer th:replace="~{fragmentos :: footer()}"></footer>
+	</body>
+</html>

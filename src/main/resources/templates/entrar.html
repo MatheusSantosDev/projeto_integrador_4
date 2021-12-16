@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<title>Service - Gerenciamento de Restaurantes</title>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css"
+	href="/css/bootstrap/bootstrap-reboot.css">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+</head>
+
+<body>
+	<div class="container h-100">
+		<div class="row h-100 justify-content-center align-items-center">
+			<div class="col-6">
+
+				<div class="text-center">
+					<a
+						th:classappend="${#httpServletRequest.getRequestURI().equals('/') ? 'active':''}"
+						href="/"> <img
+						class="rounded-circle position-relative logo-entrar"
+						alt="Logo Service" src="/img/logoService.png">
+					</a>
+				</div>
+
+				<div class="card mx-3 p-2 cartao-entrar">
+					<div class="card-body mt-4">
+
+						<div class="panel panel-info ">
+
+							<div th:if="${param.error}">
+								<div class="alert alert-danger">Usuário e/ou inválidos!</div>
+							</div>
+
+							<div class="panel-body">
+								<form action="/entrar" method="post">
+
+									<div class="form-group">
+										<h6>E-mail</h6>
+										<input name="username" class="form-control shadow-sm"
+											placeholder="Example@mail.com" />
+									</div>
+
+									<div class="form-group">
+										<h6>Senha</h6>
+										<input type="password" name="password"
+											class="form-control shadow-sm" placeholder="Senha" />
+									</div>
+
+									<div class="form-group text-center">
+										<button class="btn btn-primary btn-large shadow-sm"
+											style="width: 35%">Entrar</button>
+									</div>
+
+									<div class="form-group text-center">
+										<a class="btn-link shadow-sm" href="#">Esqueceu sua senha?</a>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

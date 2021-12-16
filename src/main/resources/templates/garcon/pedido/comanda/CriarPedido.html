@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos :: head('Service - Criar Pedido')}"></head>
+
+<body>
+	<header th:replace="~{HeaderBasico :: headerBasico()}"></header>
+	
+	<div class="container container-min-height">
+		<form method="POST" th:object="${reqNovoPedido}" th:action="@{/garcons/pedidos/comanda/{id}(id = ${id})}">
+			<div class="form-row">
+
+				<div class="form-group col-md-8">
+					<label class="form-label">Produtos</label>
+					 <select class="form-select" name="produto">
+						<option th:each="produto : ${produtos}" th:value="${produto.id}"  th:text="${produto.nome}"></option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-8">
+					<label class="form-label">Quantidade</label> 
+					<input type="text" class="form-control" th:field="*{quantidade}" />
+				</div>
+
+				<div class="form-group col-md-8">
+					<label class="form-label">Observação</label>
+					<input type="text"	class="form-control" th:field="*{observacao}" />
+				</div>				
+								
+			</div>
+			<div class="col-md-2">
+				<button type="submit" class="btn btn-success">Adicionar</button>
+
+				<a href="javascript:history.back()">
+					<button type="button" class="btn btn-primary">Voltar</button>
+				</a>
+
+			</div>
+		</form>
+	</div>
+	<footer th:replace="~{fragmentos :: footer()}"></footer>
+</body>
+</html>

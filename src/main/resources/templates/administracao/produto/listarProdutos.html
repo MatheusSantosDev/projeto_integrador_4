@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width" />
+		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		
+		<head th:replace="~{fragmentos :: head('Service - Lista de Produto')}"></head>
+	</head>
+	
+	<body>
+		<header th:replace="~{fragmentos :: header('Lista de Produto')}"></header>
+		<div class="container container-min-height">
+		
+			<div class="md-col-2" style="margin-top: 35px; ">
+				<a href="/produtos/criar">
+					<button type="button" class="btn btn-primary">Novo Produto</button>
+				</a>
+			</div>
+			
+			<table class="table" style="margin-top: .85em; text-align:center;">
+				<thead style="background-color: #F5F5F5;">
+				   <tr>
+				      <th scope="col">Codigo</th>
+				      <th scope="col">Nome</th>
+				      <th scope="col">Categoria</th>
+				      <th scope="col">Descrição</th>
+				      <th scope="col">Valor Unitario</th>
+				      <th scope="col">Ferramentas</th>
+				    </tr>
+				 </thead>
+				 
+				 <tbody>
+				 	<tr th:each="produto : ${produtos} ">
+				      <th scope="row" th:text="${produto.getId()}">id</th>
+					  <td th:text="${produto.nome}">Nome do produto</td>
+					  <td th:text="${produto.getCategoria().getNome()}">Nome da Categoria</td>
+					  <td th:text="${produto.getDescricao()}">Descricao</td>
+					  <td th:text="${produto.getValor()}">Valor</td>	
+					  <td>
+					  	<a th:href="@{/produtos/delete/{id} (id = ${produto.id})}">
+					  	 	<button type="submit" class="btn btn-danger">Excluir</button>
+					  	</a>
+					  	
+					  </td>
+				    </tr>
+				</tbody>
+			</table>
+		</div>
+		<footer th:replace="~{fragmentos :: footer()}"></footer>
+	</body>
+</html>

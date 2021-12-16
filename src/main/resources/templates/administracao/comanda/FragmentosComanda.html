@@ -1,0 +1,15 @@
+<div class="container container-min-height" th:fragment="form(action)">
+		<div class="text-center">
+			<form th:object="${comanda}" th:action="${action}" method="POST">
+				<div class="mb-3">
+					<label class="btn btn-primary">Numero da Mesa</label>
+					<select class="btn btn-primary dropdown-toggle" name="mesa">
+						<option th:each="mesasV : ${mesa}"	th:value="${mesasV.numero}" th:text="${mesasV.numero}"></option>
+					</select>
+				</div>				
+				<button class="btn btn-primary" type="submit">Abrir comanda</button>				
+			</form>
+		
+		</div>
+	
+	</div>
